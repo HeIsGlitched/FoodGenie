@@ -7,9 +7,12 @@ const express = require("express");
 const app = express();
 //configure the middleware // middleware is the function that runs between request and response
 // req -> middleware -> route -> response
+
+const auth = require("./routes/auth")
 const cors = require("cors");
 //enabling middlewares
 app.use(cors());
 app.use(express.json()); //server cannot read json request body if we remove these
+app.use("/api/v1/users", auth)
 //export the app
 module.exports = app;
